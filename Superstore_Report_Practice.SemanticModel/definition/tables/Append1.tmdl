@@ -1,0 +1,76 @@
+table Append1
+	lineageTag: af0f8d45-0248-4f2a-b2b1-3f399c89ad4f
+
+	measure 'Sales IND' = IF(SUM(Orders[Sales]) > 10000,"HIGH","LOW")
+		lineageTag: b1aa2d89-08e0-4e1b-b0e6-2029944d32b6
+
+	column OrderID
+		dataType: int64
+		formatString: 0
+		lineageTag: 663422a3-bd84-44a4-9ade-03577d5da74e
+		summarizeBy: count
+		sourceColumn: OrderID
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d6b6c9dc-9b39-4ea9-9601-809dc724be2d
+		summarizeBy: none
+		sourceColumn: OrderDate
+
+		variation Variation
+			isDefault
+			relationship: 217b2ef2-9d80-4d7e-a534-afad3ef5384f
+			defaultHierarchy: LocalDateTable_e43adeca-d004-4a75-9d28-444af78af4dd.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Customer
+		dataType: string
+		lineageTag: ac8f3e14-84ca-439d-9c32-4f95475402e7
+		summarizeBy: none
+		sourceColumn: Customer
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product
+		dataType: string
+		lineageTag: d525bf5f-ec46-4a33-a6a4-01c29915bddf
+		summarizeBy: none
+		sourceColumn: Product
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: 7fceec51-ef5d-4f25-ae7d-9fe54164dea4
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sales
+		dataType: int64
+		formatString: 0
+		lineageTag: 9fa002e4-28e6-40c8-b7ed-be7c102e77b9
+		summarizeBy: sum
+		sourceColumn: Sales
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Append1 = m
+		mode: import
+		source =
+				let
+				    Source = Table.Combine({SalesData, #"SalesData (2)"})
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

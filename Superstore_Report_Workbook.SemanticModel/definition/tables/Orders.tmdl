@@ -1,0 +1,470 @@
+table Orders
+	lineageTag: a676c6e2-3573-4bad-b7fa-ba5965830323
+
+	measure 'Total Sales' = SUM(Orders[Sales])
+		displayFolder: Measure
+		lineageTag: 4ebcc601-36be-406b-88b2-210cae4ceb26
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Profit' = SUM(Orders[Profit])
+		displayFolder: Measure
+		lineageTag: 0cd2a0c3-6e3b-4635-9f53-03ae11420632
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Quantity' = SUM(Orders[Quantity])
+		formatString: 0
+		displayFolder: Measure
+		lineageTag: f7b114ed-1c9d-4c23-b339-468678eb0783
+
+	measure 'Profit Margin %' = [Total Profit]/[Total Sales]
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Measure
+		lineageTag: a630c0f6-f262-4f9c-b909-12bd98f0d9de
+
+	measure 'Sales IND' =
+			IF(
+			    [Total Sales] > 50000,
+			    "High Sales",
+			    "Low Sales")
+		displayFolder: Measure
+		lineageTag: 5005d500-e7e9-40be-a858-ccd16048c1a4
+
+	measure Target = 100000
+		formatString: 0
+		displayFolder: Measure
+		lineageTag: 59d707b5-e1dc-4395-831e-1b56141d415c
+
+	measure 'Total Orders' = DISTINCTCOUNT(Orders[Order ID])
+		displayFolder: Measure
+		lineageTag: 8e17a99a-4b89-432e-9177-0b298c3315ea
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'PY SALES' = CALCULATE(SUM(Orders[Sales]),SAMEPERIODLASTYEAR('DATE TBL'[Date]))
+		formatString: 0.00
+		displayFolder: Measure
+		lineageTag: 49d32e12-17ab-44f0-a786-4c7cf2a23729
+
+	measure 'PROFIT STATUS' = IF([Total Profit]>0,"PROFIT","LOSS")
+		displayFolder: Measure
+		lineageTag: 48ad3403-b58b-4d23-bf73-2ec6e426e73d
+
+	measure 'PP SALES' = CALCULATE(SUM(Orders[Sales]),PARALLELPERIOD('DATE TBL'[Date],-1,YEAR))
+		formatString: 0.00
+		displayFolder: Measure
+		lineageTag: 31b267ae-a53a-48d2-993f-3033a15efde7
+
+	measure 'Sales for Corp' = CALCULATE(SUM(Orders[Sales]),FILTER(Orders,Orders[Segment] = "Corporate"))
+		displayFolder: Measure
+		lineageTag: 89bbe322-2cf8-41a5-a845-aaae8c594fb6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AVG Sales per Sub Category Code' =
+			
+			AVERAGEX(
+				KEEPFILTERS(VALUES('Orders'[Sub Category Code])),
+				CALCULATE(SUM('Orders'[Sales]))
+			)
+		lineageTag: da55928e-2941-4350-b61c-0cbe4b67496a
+
+		extendedProperty MeasureTemplate =
+				{
+				  "version": 0,
+				  "daxTemplateName": "AveragePerCategory"
+				}
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure MAX_VAL = MAX([Total Sales],[Total Profit])
+		lineageTag: 91274625-b08f-4b35-b328-c9f0a4dabcb0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure SUMEXP = SUMX(Orders,Orders[Sales]*Orders[Quantity])
+		displayFolder: Measure
+		lineageTag: 50344e67-d435-471d-8221-7f0e80a80e7a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure COUNT_RET = COUNTA(Returns[Order ID])
+		formatString: 0
+		displayFolder: Measure
+		lineageTag: d22ec1e5-4ebf-4a0f-ac04-615554673e73
+
+	column 'Row ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: fe6f49d0-a341-4e65-8703-ad2376906121
+		summarizeBy: none
+		sourceColumn: Row ID
+
+		annotation SummarizationSetBy = User
+
+	column 'Order ID'
+		dataType: string
+		lineageTag: 0f85d96c-7c57-4b9a-b784-bc1be210df82
+		summarizeBy: none
+		sourceColumn: Order ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ea9f4b77-b3db-49b4-9fe0-6714e6fc828d
+		summarizeBy: none
+		sourceColumn: Order Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Ship Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: fd8bc22b-e8d2-4e86-aaa6-62d199fcec4c
+		summarizeBy: none
+		sourceColumn: Ship Date
+
+		variation Variation
+			isDefault
+			relationship: b19c7407-bc85-40bd-907c-ebe6ae780ce8
+			defaultHierarchy: LocalDateTable_9e2c6cdb-56ce-416f-880c-5957bf836a9a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Ship Mode'
+		dataType: string
+		lineageTag: 3b149a26-d9d4-46d7-b592-6a8fe3d4ce78
+		summarizeBy: none
+		sourceColumn: Ship Mode
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer ID'
+		dataType: string
+		lineageTag: a191ff7d-3091-48ef-b877-d67bbceea3c9
+		summarizeBy: none
+		sourceColumn: Customer ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Name'
+		dataType: string
+		lineageTag: 4a34676f-c2fa-4d70-a37e-3f500e26c0ce
+		summarizeBy: none
+		sourceColumn: Customer Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Segment
+		dataType: string
+		lineageTag: 440cb92a-109c-473f-9be8-43365c5e361a
+		summarizeBy: none
+		sourceColumn: Segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: 582eb3e3-ce90-42a1-b7b2-ec3383ec044e
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: a9c5b9c7-f72e-4549-a1c7-4ab84d7d5baf
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		dataType: string
+		lineageTag: d3ca285d-09d2-4f76-8991-d61e722cd2d1
+		summarizeBy: none
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Postal Code'
+		dataType: int64
+		formatString: 0
+		lineageTag: 75aedbff-19fe-4b9b-887c-db35514a3d41
+		summarizeBy: none
+		sourceColumn: Postal Code
+
+		annotation SummarizationSetBy = User
+
+	column Region
+		dataType: string
+		lineageTag: 24c447f7-75b7-4202-9abe-320e4ec3c332
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product ID'
+		dataType: string
+		lineageTag: 9547b260-4f87-43c4-b31c-baa85ad905eb
+		summarizeBy: none
+		sourceColumn: Product ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: 5428abcf-525c-42be-b79c-a62d5f7885a8
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sub-Category
+		dataType: string
+		lineageTag: e28ab325-513f-4d99-b599-bb381440f4e8
+		summarizeBy: none
+		sourceColumn: Sub-Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Name'
+		dataType: string
+		lineageTag: cd126834-e3dd-4bbd-aaea-b2a2024cddc1
+		summarizeBy: none
+		sourceColumn: Product Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sales
+		dataType: double
+		displayFolder: Measure
+		lineageTag: c909c90d-564d-47e6-aa42-f1d62b03f0f2
+		summarizeBy: sum
+		sourceColumn: Sales
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Quantity
+		dataType: int64
+		formatString: 0
+		displayFolder: Measure
+		lineageTag: db19d462-eb8e-406c-9733-bbcb6731b740
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Discount
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Measure
+		lineageTag: d302b475-4b96-4226-a3ac-e9c1f0487c23
+		summarizeBy: sum
+		sourceColumn: Discount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"Orders","TableItemName":"Discount (bins)","ObjectType":4},"LinkType":"UsedInGroup"},{"LinkTarget":{"TableName":"Orders","TableItemName":"Discount (bins) 2","ObjectType":4},"LinkType":"UsedInGroup"}]
+
+	column Profit
+		dataType: double
+		displayFolder: Measure
+		lineageTag: f5b2ca55-f221-42ab-b117-e60f64c6140c
+		summarizeBy: sum
+		sourceColumn: Profit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Product Category'
+		dataType: string
+		lineageTag: 71318948-4885-4972-838d-bffc750b424d
+		summarizeBy: none
+		sourceColumn: Product Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sub Category Code'
+		dataType: string
+		lineageTag: 0fb0b1f5-d754-4951-89ad-7d39ffb85ac6
+		summarizeBy: none
+		sourceColumn: Sub Category Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Code'
+		dataType: int64
+		formatString: 0
+		lineageTag: 27e2027b-7f30-4236-9894-318457219070
+		summarizeBy: none
+		sourceColumn: Product Code
+
+		annotation SummarizationSetBy = User
+
+	column 'Country Code'
+		dataType: string
+		lineageTag: 354288f8-e75c-4094-8fb7-75e65a2ee2d1
+		summarizeBy: none
+		sourceColumn: Country Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Consumer Code'
+		dataType: string
+		lineageTag: 943011d2-a4f7-49c6-8d3e-20b4a3f3f19f
+		summarizeBy: none
+		sourceColumn: Consumer Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Category Name' = SWITCH(Orders[Product Category],"FUR","Furniture","TEC","Technology","OFF","Office Supplies")
+		displayFolder: Measure
+		lineageTag: 72ee43b0-b109-40cf-a503-f1b5549fc3c6
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column PERSON(M) = RELATED(People[Person])
+		lineageTag: 0e790912-e4bc-484e-8b88-9ae66ea33c20
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Discount (bins)' =
+			IF(
+				ISBLANK('Orders'[Discount]),
+				BLANK(),
+				IF(
+					'Orders'[Discount] >= 0,
+					ROUNDDOWN('Orders'[Discount] / 0.1, 0) * 0.1,
+					ROUNDUP('Orders'[Discount] / 0.1, 0) * 0.1
+				)
+			)
+		lineageTag: 1dd706f6-447f-4f2c-b370-2c3e44045ac3
+		summarizeBy: none
+
+		extendedProperty GroupingMetadata =
+				{
+				  "version": 0,
+				  "groupedColumns": [
+				    {
+				      "Column": {
+				        "Expression": {
+				          "SourceRef": {
+				            "Entity": "Orders"
+				          }
+				        },
+				        "Property": "Discount"
+				      }
+				    }
+				  ],
+				  "binningMetadata": {
+				    "binSize": {
+				      "value": 0.1,
+				      "unit": 0
+				    }
+				  }
+				}
+
+		annotation GroupingDesignState = {"Version":0,"Sources":[{"Name":"o","Entity":"Orders"}],"GroupedColumns":[{"Column":{"Expression":{"SourceRef":{"Source":"o"}},"Property":"Discount"}}],"BinItem":{"Expression":{"Floor":{"Expression":{"Column":{"Expression":{"SourceRef":{"Source":"o"}},"Property":"Discount"}},"Size":0.1}}}}
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Discount (bins) 2' =
+			IF(
+				ISBLANK('Orders'[Discount]),
+				BLANK(),
+				IF(
+					'Orders'[Discount] >= 0,
+					ROUNDDOWN('Orders'[Discount] / 0.1, 0) * 0.1,
+					ROUNDUP('Orders'[Discount] / 0.1, 0) * 0.1
+				)
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: d0060c95-888e-45d7-a70f-b636ba5f2480
+		summarizeBy: none
+
+		extendedProperty GroupingMetadata =
+				{
+				  "version": 0,
+				  "groupedColumns": [
+				    {
+				      "Column": {
+				        "Expression": {
+				          "SourceRef": {
+				            "Entity": "Orders"
+				          }
+				        },
+				        "Property": "Discount"
+				      }
+				    }
+				  ],
+				  "binningMetadata": {
+				    "binSize": {
+				      "value": 0.1,
+				      "unit": 0
+				    }
+				  }
+				}
+
+		annotation GroupingDesignState = {"Version":0,"Sources":[{"Name":"o","Entity":"Orders"}],"GroupedColumns":[{"Column":{"Expression":{"SourceRef":{"Source":"o"}},"Property":"Discount"}}],"BinItem":{"Expression":{"Floor":{"Expression":{"Column":{"Expression":{"SourceRef":{"Source":"o"}},"Property":"Discount"}},"Size":0.1}}}}
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'Category Hierarchy'
+		lineageTag: a79aac8b-8b30-41d4-aebf-28ba78d821a5
+
+		level Category
+			lineageTag: 024d4d81-edc1-422d-ad2d-b60eab706268
+			column: Category
+
+		level 'Sub Category Code'
+			lineageTag: be987ac1-0751-4681-9c96-81a1033ad53a
+			column: 'Sub Category Code'
+
+		level 'Product Category'
+			lineageTag: e8721168-0b9a-4461-bc70-3413028fdbb6
+			column: 'Product Category'
+
+	partition Orders = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents(Path), null, true),
+				    Orders_Sheet = Source{[Item="Orders",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Orders_Sheet, [PromoteAllScalars=true]),
+				    Custom1 = #"Promoted Headers",
+				    #"Filtered Rows" = Table.SelectRows(Custom1, each ([City] <> "Alexandria" and [City] <> "Arlington")),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Filtered Rows",{{"Row ID", Int64.Type}, {"Order ID", type text}, {"Order Date", type date}, {"Ship Date", type date}, {"Ship Mode", type text}, {"Customer ID", type text}, {"Customer Name", type text}, {"Segment", type text}, {"Country", type text}, {"City", type text}, {"State", type text}, {"Postal Code", Int64.Type}, {"Region", type text}, {"Product ID", type text}, {"Category", type text}, {"Sub-Category", type text}, {"Product Name", type text}, {"Sales", type number}, {"Quantity", Int64.Type}, {"Discount", type number}, {"Profit", type number}}),
+				    #"Duplicated Column" = Table.DuplicateColumn(#"Changed Type", "Product ID", "Product ID - Copy"),
+				    #"Split Column by Delimiter" = Table.SplitColumn(#"Duplicated Column", "Product ID - Copy", Splitter.SplitTextByDelimiter("-", QuoteStyle.Csv), {"Product ID - Copy.1", "Product ID - Copy.2", "Product ID - Copy.3"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"Product ID - Copy.1", type text}, {"Product ID - Copy.2", type text}, {"Product ID - Copy.3", Int64.Type}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type1",{{"Product ID - Copy.1", "Product Category"}, {"Product ID - Copy.2", "Sub Category Code"}, {"Product ID - Copy.3", "Product Code"}}),
+				    #"Inserted Replaced Text" = Table.AddColumn(#"Renamed Columns", "Replaced Text", each Text.Replace(Text.Upper([Country]), "NITED STATE", ""), type text),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Inserted Replaced Text",{{"Replaced Text", "Country Code"}}),
+				    #"Inserted Text Before Delimiter" = Table.AddColumn(#"Renamed Columns1", "Text Before Delimiter", each Text.BeforeDelimiter([Customer ID], "-"), type text),
+				    #"Renamed Columns2" = Table.RenameColumns(#"Inserted Text Before Delimiter",{{"Text Before Delimiter", "Consumer Code"}}),
+				    #"Kept First Rows" = Table.FirstN(#"Renamed Columns2",#"Limit"),
+				    #"Data Limit" = if Limit=0 then #"Renamed Columns2" else  #"Kept First Rows"
+				in
+				     #"Data Limit"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

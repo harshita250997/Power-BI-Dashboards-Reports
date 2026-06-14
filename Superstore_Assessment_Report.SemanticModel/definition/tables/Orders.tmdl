@@ -1,0 +1,319 @@
+table Orders
+	lineageTag: 45e1d129-c321-4874-b74a-39e953b0307d
+
+	measure 'TOTAL SALES' = SUM(Orders[Sales])
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Measures
+		lineageTag: 1d1360c4-fa6d-4af1-9993-b47a2ac04904
+
+	measure 'TOTAL PROFIT' = SUM(Orders[Profit])
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Measures
+		lineageTag: 70d87819-e72d-49fa-adf6-93d1a1b7967d
+
+	measure 'TOTAL ORDERS' = DISTINCTCOUNT(Orders[Order ID])
+		formatString: 0
+		displayFolder: Measures
+		lineageTag: b69f979f-af37-402d-8777-a811658fbd10
+
+	measure 'AVERAGE DISCOUNT' = AVERAGE(Orders[Discount])
+		displayFolder: Measures
+		lineageTag: 9b956f11-8bdb-44f1-ab62-4d587edc7792
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'SALES YTD' = TOTALYTD([TOTAL SALES],DATE_TBL[Date])
+		displayFolder: Measures
+		lineageTag: f850dc95-7beb-4cd3-bdbe-a28f2fdd81c8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'PY SALES' = CALCULATE([TOTAL SALES],SAMEPERIODLASTYEAR(DATE_TBL[Date]))
+		displayFolder: Measures
+		lineageTag: 9a8ecb03-378b-4d7d-ac07-6396677d724b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'YOY SALES' = DIVIDE(([TOTAL SALES]-[PY SALES]),[PY SALES],0)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Measures
+		lineageTag: 63859823-23c3-4b53-ac82-d7f14a5103df
+
+	measure 'Page Title' = ```
+			" Sales Analysis - " & SELECTEDVALUE(Orders[Segment]," All Segment") 
+			```
+		lineageTag: 199ff66a-64ee-4672-a0b6-9600fdca89b0
+
+	measure 'Year Selection' = "YEAR: " & SELECTEDVALUE(DATE_TBL[Date].[Year],"All")
+		displayFolder: Measures
+		lineageTag: 0cb1c45f-468d-45b9-bd20-1831d214f86e
+
+	measure 'SALES RANK' = RANKX(ALL(Orders[Product Name]),[TOTAL SALES],,DESC)
+		formatString: 0
+		displayFolder: Measures
+		lineageTag: ffefafca-0dfe-428f-b242-6393ce233bb7
+
+	measure TOPN = IF('TOPN'[TOPN Value]>=[SALES RANK],1,0)
+		formatString: 0
+		displayFolder: Measures
+		lineageTag: a53b09f8-63e0-4903-ad90-42be6f4d30bc
+
+	measure Rank = RANKX(Orders,[TOTAL SALES],,DESC)
+		formatString: 0
+		displayFolder: Measures
+		lineageTag: de366521-8f8b-4da7-b0b6-7ba70625800b
+
+	column 'Row ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 59fb50e7-09dd-4a79-b27a-729c3327f553
+		summarizeBy: count
+		sourceColumn: Row ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order ID'
+		dataType: string
+		lineageTag: 7e7fcf2d-dde1-458c-a6a9-7fad954e189e
+		summarizeBy: none
+		sourceColumn: Order ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ef7bf96f-d6a7-4854-973c-f67392b578df
+		summarizeBy: none
+		sourceColumn: Order Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Ship Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: eda46f33-e928-43e1-b8ab-c3a402196185
+		summarizeBy: none
+		sourceColumn: Ship Date
+
+		variation Variation
+			isDefault
+			relationship: e9b2f883-3c57-4e88-8369-924a851e2a57
+			defaultHierarchy: LocalDateTable_0cc1af6a-3bab-4fcd-bbb8-13b548a2c13e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Ship Mode'
+		dataType: string
+		lineageTag: d28b0537-cdff-4a60-8778-ce77943d1849
+		summarizeBy: none
+		sourceColumn: Ship Mode
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer ID'
+		dataType: string
+		lineageTag: e1e89d6e-3da1-43f9-8931-53ae86586fc9
+		summarizeBy: none
+		sourceColumn: Customer ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Name'
+		dataType: string
+		lineageTag: ec2654d1-6d91-494b-9ea0-252bb8473e91
+		summarizeBy: none
+		sourceColumn: Customer Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Segment
+		dataType: string
+		lineageTag: 7f664b9d-983c-4ead-a173-816c1c1c5f54
+		summarizeBy: none
+		sourceColumn: Segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: f81c8fb5-d827-48e0-b376-cf913c91f764
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: 5da114e7-3f72-4c87-97d7-1c3cc6484818
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		dataType: string
+		lineageTag: 785120fb-8768-4dda-bd09-0ae4818a136e
+		summarizeBy: none
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Postal Code'
+		dataType: int64
+		formatString: 0
+		lineageTag: 94465b4e-99ba-4c67-8f0f-d3615f47dfa8
+		summarizeBy: count
+		sourceColumn: Postal Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: 401112b7-aa7b-4444-bde7-1afd669165f7
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product ID'
+		dataType: string
+		lineageTag: 4673f9be-f496-4560-83a8-153db3228329
+		summarizeBy: none
+		sourceColumn: Product ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: ff5953be-d60d-4704-a1cd-ce39701a9cf1
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sub-Category
+		dataType: string
+		lineageTag: b7633bad-f711-4822-b31f-67c880bcac8b
+		summarizeBy: none
+		sourceColumn: Sub-Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Name'
+		dataType: string
+		lineageTag: 06805f58-fe50-478a-a718-9e446dc396ff
+		summarizeBy: none
+		sourceColumn: Product Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sales
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: b2938183-38dc-4ffb-a1b2-5d549c61a675
+		summarizeBy: sum
+		sourceColumn: Sales
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column Quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 0029f48a-b76d-41fb-9a42-830954c5991b
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Discount
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 59aea5a2-f9a9-46e4-b106-28ad8fe9c090
+		summarizeBy: sum
+		sourceColumn: Discount
+
+		annotation SummarizationSetBy = Automatic
+
+	column Profit
+		dataType: double
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 3174bd1c-94f3-423d-8626-3c9db208ff64
+		summarizeBy: sum
+		sourceColumn: Profit
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PROFIT MARGIN %' = ```
+			DIVIDE(Orders[Profit],Orders[Sales],0) 
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 07ca66af-6494-4bb5-a8c5-2de079380491
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"Orders","TableItemName":"PROFIT MARGIN % (bins)","ObjectType":4},"LinkType":"UsedInGroup"}]
+
+	column 'PROFIT MARGIN % (bins)' =
+			IF(
+				ISBLANK('Orders'[PROFIT MARGIN %]),
+				BLANK(),
+				IF(
+					'Orders'[PROFIT MARGIN %] >= 0,
+					ROUNDDOWN('Orders'[PROFIT MARGIN %] / 0.2, 0) * 0.2,
+					ROUNDUP('Orders'[PROFIT MARGIN %] / 0.2, 0) * 0.2
+				)
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 65f7f4ca-42a2-4305-8489-7cc01e11ae95
+		summarizeBy: none
+
+		extendedProperty GroupingMetadata =
+				{
+				  "version": 0,
+				  "groupedColumns": [
+				    {
+				      "Column": {
+				        "Expression": {
+				          "SourceRef": {
+				            "Entity": "Orders"
+				          }
+				        },
+				        "Property": "PROFIT MARGIN %"
+				      }
+				    }
+				  ],
+				  "binningMetadata": {
+				    "binSize": {
+				      "value": 0.2,
+				      "unit": 0
+				    }
+				  }
+				}
+
+		annotation GroupingDesignState = {"Version":0,"Sources":[{"Name":"o","Entity":"Orders"}],"GroupedColumns":[{"Column":{"Expression":{"SourceRef":{"Source":"o"}},"Property":"PROFIT MARGIN %"}}],"BinItem":{"Expression":{"Floor":{"Expression":{"Column":{"Expression":{"SourceRef":{"Source":"o"}},"Property":"PROFIT MARGIN %"}},"Size":0.2}}}}
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Orders = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\TANMAY\Desktop\Harshita\Power BI\PBI Reports\Datasets\Sample - Superstore XLSX (1).xlsx"), null, true),
+				    Orders_Sheet = Source{[Item="Orders",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Orders_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Row ID", Int64.Type}, {"Order ID", type text}, {"Order Date", type date}, {"Ship Date", type date}, {"Ship Mode", type text}, {"Customer ID", type text}, {"Customer Name", type text}, {"Segment", type text}, {"Country", type text}, {"City", type text}, {"State", type text}, {"Postal Code", Int64.Type}, {"Region", type text}, {"Product ID", type text}, {"Category", type text}, {"Sub-Category", type text}, {"Product Name", type text}, {"Sales", type number}, {"Quantity", Int64.Type}, {"Discount", type number}, {"Profit", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,35 @@
+table Returns
+	lineageTag: 7788f762-99ec-4eb1-ac1e-f3d11301ad69
+
+	column Returned
+		dataType: string
+		lineageTag: ed8e6b1b-13d3-4387-afe2-228c6c97b425
+		summarizeBy: none
+		sourceColumn: Returned
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order ID'
+		dataType: string
+		lineageTag: 614d382f-46a8-4e24-a7f0-0fa17fae4fc8
+		summarizeBy: none
+		sourceColumn: Order ID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Returns = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\TANMAY\Desktop\Harshita\Power BI\PBI Reports\Datasets\Sample - Superstore XLSX (1).xlsx"), null, true),
+				    Returns_Sheet = Source{[Item="Returns",Kind="Sheet"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(Returns_Sheet,{{"Column1", type text}, {"Column2", type text}}),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"Returned", type text}, {"Order ID", type text}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

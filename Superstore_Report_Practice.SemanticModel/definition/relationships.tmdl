@@ -1,0 +1,61 @@
+relationship b19c7407-bc85-40bd-907c-ebe6ae780ce8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Orders.'Ship Date'
+	toColumn: LocalDateTable_9e2c6cdb-56ce-416f-880c-5957bf836a9a.Date
+
+relationship AutoDetected_65f612be-889b-4451-bd61-7d2a5e86abee
+	fromColumn: Orders.Region
+	toColumn: People.Region
+
+relationship f98d4c06-9052-be7f-42b0-bc86434abf20
+	fromColumn: Orders.'Order ID'
+	toColumn: Returns.'Order ID'
+
+relationship 217b2ef2-9d80-4d7e-a534-afad3ef5384f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Append1.OrderDate
+	toColumn: LocalDateTable_e43adeca-d004-4a75-9d28-444af78af4dd.Date
+
+relationship AutoDetected_bbe4af67-9d9f-45e4-aa2b-94beff20119d
+	fromColumn: Append1.Region
+	toColumn: People.Region
+
+relationship 3e87d605-bf0a-9b0a-fb28-b97323cb37ec
+	fromColumn: Orders.'Order Date'
+	toColumn: DATE.Date
+
+relationship 012c92ea-cb63-4d44-9a31-215666dacf6b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Orders.PYr
+	toColumn: LocalDateTable_11de3599-ee40-461f-8621-707a7e8799d4.Date
+
+relationship 1406d68b-65b4-4cc7-bbbd-1e01a872011b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DATE.Date
+	toColumn: LocalDateTable_bed403a5-3f98-49a5-832c-9cf47361e28a.Date
+
+relationship f73f171c-34a4-47d2-8908-5406d61ddad3
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DATE.SPLstYr
+	toColumn: LocalDateTable_ae887a5b-fad4-40b6-8110-f293bcbc3c27.Date
+
+relationship 61523056-9bf9-4076-ae0b-73532685dd71
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimProduct.StartDate
+	toColumn: LocalDateTable_cd63b6ec-9457-4bd4-a2fd-de6b7266248d.Date
+
+relationship 5fec1606-d704-4cd3-8ca3-f4fc85800c3c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimProduct.EndDate
+	toColumn: LocalDateTable_1c1b444a-e433-4f67-885b-19bb24ee0aaf.Date
+
+relationship 2a17923a-f6c4-4032-8556-618c1ca073f2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Query1.BirthDate
+	toColumn: LocalDateTable_8ecc7636-f390-4846-8237-bc938e2f2463.Date
+
+relationship 385231f3-7a36-4812-9e33-a22421efe41e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Query1.DateFirstPurchase
+	toColumn: LocalDateTable_e3c0445e-e299-464c-8c69-3818c786edb9.Date
+

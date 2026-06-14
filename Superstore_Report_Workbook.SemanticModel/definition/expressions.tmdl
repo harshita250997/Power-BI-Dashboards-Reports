@@ -1,0 +1,14 @@
+expression Limit = 0 meta [IsParameterQuery=true, Type="Number", IsParameterQueryRequired=true]
+	lineageTag: b6140ed0-0206-4cb7-a320-78c939dc024d
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Number
+
+expression Path = "C:\Users\TANMAY\Desktop\Harshita\Power BI\PBI Reports\Datasets\Sample - Superstore XLSX (1).xlsx" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 0b6e968f-c5e1-410f-a214-143e7228eda4
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+

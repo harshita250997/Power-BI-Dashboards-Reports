@@ -1,0 +1,23 @@
+table 'Custom Slicer'
+	lineageTag: 028fa59b-9e49-4417-b4a9-6a3e8ee677e4
+
+	column 'Category for Jan2017'
+		dataType: string
+		lineageTag: 09eb9e11-5253-4c55-b141-a7dcd050501b
+		summarizeBy: none
+		sourceColumn: Category for Jan2017
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Custom Slicer' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WcistysssKS1KVUjLL1LISswzMjA0V4rViVYKSU3OyMvPyU+vBEt5JeYpwOX809Iyk1ODSwsKcjJTixXcUORjAQ==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"Column1", "Category for Jan2017"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+

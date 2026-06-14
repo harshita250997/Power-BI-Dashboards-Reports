@@ -1,0 +1,44 @@
+table 'DATE TBL'
+	lineageTag: 72d1c9cd-4859-479a-a5d9-f7bddaf6f8c9
+	dataCategory: Time
+
+	measure 'Dynamic Title' =
+			"Sales Performance - " &
+			SELECTEDVALUE('DATE TBL'[YEAR])
+		lineageTag: e05fac00-aa24-455c-90fa-f1c83a1557b7
+
+	column Date
+		isKey
+		formatString: General Date
+		lineageTag: 12b2b1dd-3500-428c-8512-5e4ed58417cf
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+	column YEAR = YEAR('DATE TBL'[Date])
+		formatString: 0
+		lineageTag: 951df608-c8dc-42dc-8fea-800b19937af1
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'MONTH YEAR' = FORMAT('DATE TBL'[Date],"MMM YYYY")
+		dataType: dateTime
+		formatString: mmm-yy
+		lineageTag: 8bbf5a54-3cb3-4889-9760-5867717125ba
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	partition 'DATE TBL' = calculated
+		mode: import
+		source = CALENDARAUTO()
+
+	annotation PBI_Id = b2b8702e215346ae88e24d05b1b66031
+

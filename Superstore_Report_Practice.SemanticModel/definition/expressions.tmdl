@@ -1,0 +1,35 @@
+expression Limit = 0 meta [IsParameterQuery=true, Type="Number", IsParameterQueryRequired=true]
+	lineageTag: b6140ed0-0206-4cb7-a320-78c939dc024d
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Number
+
+expression SalesData =
+		let
+		    Source = Excel.Workbook(File.Contents("C:\Users\TANMAY\Desktop\Harshita\Power BI\PBI Reports\Datasets\Sales_Data_Jan.xlsx"), null, true),
+		    SalesData_Sheet = Source{[Item="SalesData",Kind="Sheet"]}[Data],
+		    #"Promoted Headers" = Table.PromoteHeaders(SalesData_Sheet, [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"OrderID", Int64.Type}, {"OrderDate", type date}, {"Customer", type text}, {"Product", type text}, {"Region", type text}, {"Sales", Int64.Type}})
+		in
+		    #"Changed Type"
+	lineageTag: 1da95fa4-95a5-4dd8-af78-89ce0ee8a046
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'SalesData (2)' =
+		let
+		    Source = Excel.Workbook(File.Contents("C:\Users\TANMAY\Desktop\Harshita\Power BI\PBI Reports\Datasets\Sales_Data_Feb (1).xlsx"), null, true),
+		    SalesData_Sheet = Source{[Item="SalesData",Kind="Sheet"]}[Data],
+		    #"Promoted Headers" = Table.PromoteHeaders(SalesData_Sheet, [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"OrderID", Int64.Type}, {"OrderDate", type date}, {"Customer", type text}, {"Product", type text}, {"Region", type text}, {"Sales", Int64.Type}})
+		in
+		    #"Changed Type"
+	lineageTag: 57ebaa83-6f80-4a9e-a61a-da9d8caec732
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

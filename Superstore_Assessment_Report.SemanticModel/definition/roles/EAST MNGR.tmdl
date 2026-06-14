@@ -1,0 +1,7 @@
+role 'EAST MNGR'
+	modelPermission: read
+
+	tablePermission Orders = [Region] == "East"
+
+	annotation PBI_Id = ae9c18631cf84e7f90171e16ce72b7d8
+

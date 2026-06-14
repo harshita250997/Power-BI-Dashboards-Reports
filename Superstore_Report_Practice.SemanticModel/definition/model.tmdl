@@ -1,0 +1,34 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["Orders","People","Returns","Limit","SalesData","SalesData (2)","Append1","Custom Slicer","DimProduct","FactInternetSales","Query1"]
+
+ref table Orders
+ref table DateTableTemplate_5d7bef38-7b58-4954-8247-71f7b511f657
+ref table LocalDateTable_9e2c6cdb-56ce-416f-880c-5957bf836a9a
+ref table People
+ref table Returns
+ref table Append1
+ref table LocalDateTable_e43adeca-d004-4a75-9d28-444af78af4dd
+ref table 'Custom Slicer'
+ref table DATE
+ref table LocalDateTable_11de3599-ee40-461f-8621-707a7e8799d4
+ref table LocalDateTable_bed403a5-3f98-49a5-832c-9cf47361e28a
+ref table LocalDateTable_ae887a5b-fad4-40b6-8110-f293bcbc3c27
+ref table DimProduct
+ref table LocalDateTable_cd63b6ec-9457-4bd4-a2fd-de6b7266248d
+ref table LocalDateTable_1c1b444a-e433-4f67-885b-19bb24ee0aaf
+ref table FactInternetSales
+ref table Query1
+ref table LocalDateTable_8ecc7636-f390-4846-8237-bc938e2f2463
+ref table LocalDateTable_e3c0445e-e299-464c-8c69-3818c786edb9
+
+ref cultureInfo en-US
+

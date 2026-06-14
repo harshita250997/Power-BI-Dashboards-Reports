@@ -1,0 +1,61 @@
+table DATE
+	lineageTag: 264ab014-ded3-4eda-b585-d9d1accd4512
+
+	column Date
+		formatString: General Date
+		lineageTag: 902f020e-bb94-4fbf-8309-04f423586278
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: 1406d68b-65b4-4cc7-bbbd-1e01a872011b
+			defaultHierarchy: LocalDateTable_bed403a5-3f98-49a5-832c-9cf47361e28a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'MONTH YEAR' = MONTH('DATE'[Date])&" "&YEAR('DATE'[Date])
+		lineageTag: ab54089e-b0ca-43d3-9470-d86ff8f47c73
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'DATE (MMMM DD,YYYYY)' = FORMAT('DATE'[Date],"MMMM DD,YYYY")
+		lineageTag: 1051c583-de35-4216-a38b-90d59dc84790
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column SPLstYr = SAMEPERIODLASTYEAR('DATE'[Date])
+		formatString: General Date
+		lineageTag: 8057706b-808d-4fc3-9370-323702491b80
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: f73f171c-34a4-47d2-8908-5406d61ddad3
+			defaultHierarchy: LocalDateTable_ae887a5b-fad4-40b6-8110-f293bcbc3c27.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column YTD
+		type: calculated
+		lineageTag: 9474007a-5fa3-4a78-891c-66e391eed529
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column YEAR = YEAR('DATE'[Date])
+		formatString: 0
+		lineageTag: 386eb9c4-c8bd-493b-a2eb-30c2560e7361
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DATE = calculated
+		mode: import
+		source = CALENDAR("01-01-2000",TODAY())
+
+	annotation PBI_Id = 277a965a0b4f4fa9a924a6c9d05c62b2
+
