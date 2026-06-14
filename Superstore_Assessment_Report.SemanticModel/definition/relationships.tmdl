@@ -20,3 +20,8 @@ relationship 5ae5a4e5-021d-d3d0-e857-efb1bd08d1b8
 	fromColumn: Orders.'Order Date'
 	toColumn: DATE_TBL.Date
 
+relationship bfc31d8b-4777-4af8-b4d5-b4bf8853aaef
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DATE_TBL.YearMonth
+	toColumn: LocalDateTable_38aa91a6-b7d7-4029-80e2-389c829ab3bc.Date
+

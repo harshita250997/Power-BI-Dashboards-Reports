@@ -3868,16 +3868,6 @@ cultureInfo en-US
 			          "topn": {
 			            "State": "Generated"
 			          }
-			        },
-			        {
-			          "TOPN- Input Value": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
-			          }
 			        }
 			      ]
 			    },
@@ -4002,1641 +3992,313 @@ cultureInfo en-US
 			          }
 			        }
 			      ]
+			    },
+			    "order.rank": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Orders",
+			          "ConceptualProperty": "Rank"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "rank": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "flourishing": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "sheer": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        },
+			        {
+			          "absolute": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        }
+			      ]
 			    }
 			  },
 			  "Relationships": {
-			    "person_is_named_person": {
-			      "Binding": {
-			        "ConceptualEntity": "People"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "person": {
-			          "Target": {
-			            "Entity": "person"
-			          }
-			        },
-			        "person.person": {
-			          "Target": {
-			            "Entity": "person.person"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Name": {
-			            "Subject": {
-			              "Role": "person"
-			            },
-			            "Name": {
-			              "Role": "person.person"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "people_are_names_IDs_of_people"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "person"
-			            },
-			            "Object": {
-			              "Role": "person.person"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "people_have_people"
-			        }
-			      ]
-			    },
-			    "order_is_expensive": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.sale": {
-			          "Target": {
-			            "Entity": "order.sale"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Adjective": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Adjectives": [
-			              {
-			                "expensive": {
-			                  "State": "Generated"
-			                }
-			              }
-			            ],
-			            "Antonyms": [
-			              {
-			                "cheap": {
-			                  "State": "Generated"
-			                }
-			              }
-			            ],
-			            "Measurement": {
-			              "Role": "order.sale"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "sale_indicates_how_expensive_orders_are"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Object": {
-			              "Role": "order.sale"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "orders_have_sales"
-			        }
-			      ]
-			    },
-			    "order_is_expensive1": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.profit": {
-			          "Target": {
-			            "Entity": "order.profit"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Adjective": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Adjectives": [
-			              {
-			                "expensive": {
-			                  "State": "Generated"
-			                }
-			              }
-			            ],
-			            "Antonyms": [
-			              {
-			                "cheap": {
-			                  "State": "Generated"
-			                }
-			              }
-			            ],
-			            "Measurement": {
-			              "Role": "order.profit"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "profit_indicates_how_expensive_orders_are"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Object": {
-			              "Role": "order.profit"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "orders_have_profits"
-			        }
-			      ]
-			    },
-			    "order_is_ordered_on_order_date": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.order_date": {
-			          "Target": {
-			            "Entity": "order.order_date"
-			          }
-			        }
-			      },
-			      "SemanticSlots": {
-			        "When": {
-			          "Role": "order.order_date"
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Verb": {
-			            "Verbs": [
-			              {
-			                "order": {
-			                  "State": "Generated"
-			                }
-			              }
-			            ],
-			            "Object": {
-			              "Role": "order"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.9,
-			          "ID": "orders_are_ordered_on_order_dates"
-			        }
-			      ]
-			    },
-			    "order_is_shipped_on_ship_date": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.ship_date": {
-			          "Target": {
-			            "Entity": "order.ship_date"
-			          }
-			        }
-			      },
-			      "SemanticSlots": {
-			        "When": {
-			          "Role": "order.ship_date"
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Verb": {
-			            "Verbs": [
-			              {
-			                "ship": {
-			                  "State": "Generated"
-			                }
-			              }
-			            ],
-			            "Object": {
-			              "Role": "order"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.9,
-			          "ID": "orders_are_shipped_on_ship_dates"
-			        }
-			      ]
-			    },
-			    "order_in_country": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.country": {
-			          "Target": {
-			            "Entity": "order.country"
-			          }
-			        }
-			      },
-			      "SemanticSlots": {
-			        "Where": {
-			          "Role": "order.country"
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Preposition": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Prepositions": [
-			              {
-			                "in": {
-			                  "State": "Generated"
-			                }
-			              }
-			            ],
-			            "Object": {
-			              "Role": "order.country"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "orders_are_in_countries"
-			        }
-			      ]
-			    },
-			    "order_in_city": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.city": {
-			          "Target": {
-			            "Entity": "order.city"
-			          }
-			        }
-			      },
-			      "SemanticSlots": {
-			        "Where": {
-			          "Role": "order.city"
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Preposition": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Prepositions": [
-			              {
-			                "in": {
-			                  "State": "Generated"
-			                }
-			              }
-			            ],
-			            "Object": {
-			              "Role": "order.city"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "orders_are_in_cities"
-			        }
-			      ]
-			    },
-			    "order_in_state": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.state": {
-			          "Target": {
-			            "Entity": "order.state"
-			          }
-			        }
-			      },
-			      "SemanticSlots": {
-			        "Where": {
-			          "Role": "order.state"
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Preposition": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Prepositions": [
-			              {
-			                "in": {
-			                  "State": "Generated"
-			                }
-			              }
-			            ],
-			            "Object": {
-			              "Role": "order.state"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "orders_are_in_states"
-			        }
-			      ]
-			    },
-			    "person_in_region": {
-			      "Binding": {
-			        "ConceptualEntity": "People"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "person": {
-			          "Target": {
-			            "Entity": "person"
-			          }
-			        },
-			        "person.region": {
-			          "Target": {
-			            "Entity": "person.region"
-			          }
-			        }
-			      },
-			      "SemanticSlots": {
-			        "Where": {
-			          "Role": "person.region"
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Preposition": {
-			            "Subject": {
-			              "Role": "person"
-			            },
-			            "Prepositions": [
-			              {
-			                "in": {
-			                  "State": "Generated"
-			                }
-			              }
-			            ],
-			            "Object": {
-			              "Role": "person.region"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "people_are_in_regions"
-			        }
-			      ]
-			    },
-			    "order_has_row_ID": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.row_ID": {
-			          "Target": {
-			            "Entity": "order.row_ID"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Object": {
-			              "Role": "order.row_ID"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "orders_have_row_ID"
-			        }
-			      ]
-			    },
-			    "order_has_order_date": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.order_date": {
-			          "Target": {
-			            "Entity": "order.order_date"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Object": {
-			              "Role": "order.order_date"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "orders_have_order_dates"
-			        }
-			      ]
-			    },
-			    "order_has_ship_date": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.ship_date": {
-			          "Target": {
-			            "Entity": "order.ship_date"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Object": {
-			              "Role": "order.ship_date"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "orders_have_ship_dates"
-			        }
-			      ]
-			    },
-			    "order_has_ship_mode": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.ship_mode": {
-			          "Target": {
-			            "Entity": "order.ship_mode"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Object": {
-			              "Role": "order.ship_mode"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "orders_have_ship_modes"
-			        }
-			      ]
-			    },
-			    "order_has_customer_ID": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.customer_ID": {
-			          "Target": {
-			            "Entity": "order.customer_ID"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Object": {
-			              "Role": "order.customer_ID"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "orders_have_customer_ID"
-			        }
-			      ]
-			    },
-			    "order_has_customer_name": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.customer_name": {
-			          "Target": {
-			            "Entity": "order.customer_name"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Object": {
-			              "Role": "order.customer_name"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "orders_have_customer_names"
-			        }
-			      ]
-			    },
-			    "order_has_segment": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.segment": {
-			          "Target": {
-			            "Entity": "order.segment"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Object": {
-			              "Role": "order.segment"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "orders_have_segments"
-			        }
-			      ]
-			    },
-			    "order_has_country": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.country": {
-			          "Target": {
-			            "Entity": "order.country"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Object": {
-			              "Role": "order.country"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "orders_have_countries"
-			        }
-			      ]
-			    },
-			    "order_has_city": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.city": {
-			          "Target": {
-			            "Entity": "order.city"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Object": {
-			              "Role": "order.city"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "orders_have_cities"
-			        }
-			      ]
-			    },
-			    "order_has_state": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.state": {
-			          "Target": {
-			            "Entity": "order.state"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Object": {
-			              "Role": "order.state"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "orders_have_states"
-			        }
-			      ]
-			    },
-			    "order_has_postal_code": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.postal_code": {
-			          "Target": {
-			            "Entity": "order.postal_code"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Object": {
-			              "Role": "order.postal_code"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "orders_have_postal_codes"
-			        }
-			      ]
-			    },
-			    "order_has_product_ID": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.product_ID": {
-			          "Target": {
-			            "Entity": "order.product_ID"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Object": {
-			              "Role": "order.product_ID"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "orders_have_product_ID"
-			        }
-			      ]
-			    },
-			    "order_has_category": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.category": {
-			          "Target": {
-			            "Entity": "order.category"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Object": {
-			              "Role": "order.category"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "orders_have_categories"
-			        }
-			      ]
-			    },
-			    "order_has_subcategory": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.subcategory": {
-			          "Target": {
-			            "Entity": "order.subcategory"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Object": {
-			              "Role": "order.subcategory"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "orders_have_subcategories"
-			        }
-			      ]
-			    },
-			    "order_has_product_name": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.product_name": {
-			          "Target": {
-			            "Entity": "order.product_name"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Object": {
-			              "Role": "order.product_name"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "orders_have_product_names"
-			        }
-			      ]
-			    },
-			    "order_has_quantity": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.quantity": {
-			          "Target": {
-			            "Entity": "order.quantity"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Object": {
-			              "Role": "order.quantity"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "orders_have_quantities"
-			        }
-			      ]
-			    },
-			    "order_has_discount": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.discount": {
-			          "Target": {
-			            "Entity": "order.discount"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Object": {
-			              "Role": "order.discount"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "orders_have_discounts"
-			        }
-			      ]
-			    },
-			    "order_has_profit_margin_": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.profit_margin_": {
-			          "Target": {
-			            "Entity": "order.profit_margin_"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Object": {
-			              "Role": "order.profit_margin_"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "orders_have_profit_margin_"
-			        }
-			      ]
-			    },
-			    "order_has_PROFIT_MARGIN__bins": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.PROFIT_MARGIN__bins": {
-			          "Target": {
-			            "Entity": "order.PROFIT_MARGIN__bins"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Object": {
-			              "Role": "order.PROFIT_MARGIN__bins"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "orders_have_PROFIT_MARGIN__bins"
-			        }
-			      ]
-			    },
-			    "order_has_total_sales": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.total_sales": {
-			          "Target": {
-			            "Entity": "order.total_sales"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Object": {
-			              "Role": "order.total_sales"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "orders_have_total_sales"
-			        }
-			      ]
-			    },
-			    "order_has_total_profit": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.total_profit": {
-			          "Target": {
-			            "Entity": "order.total_profit"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Object": {
-			              "Role": "order.total_profit"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "orders_have_total_profit"
-			        }
-			      ]
-			    },
-			    "order_has_total_orders": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.total_orders": {
-			          "Target": {
-			            "Entity": "order.total_orders"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Object": {
-			              "Role": "order.total_orders"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "orders_have_total_orders"
-			        }
-			      ]
-			    },
-			    "order_has_average_discount": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.average_discount": {
-			          "Target": {
-			            "Entity": "order.average_discount"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Object": {
-			              "Role": "order.average_discount"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "orders_have_average_discount"
-			        }
-			      ]
-			    },
-			    "date_tbl_has_order_sales_ytd": {
+			    "date_tbl_date_has_date_hierarchy": {
 			      "Binding": {
 			        "ConceptualEntity": "DATE_TBL"
 			      },
 			      "State": "Generated",
 			      "Roles": {
-			        "date_tbl": {
-			          "Target": {
-			            "Entity": "date_tbl"
-			          }
-			        },
-			        "order.sales_ytd": {
-			          "Target": {
-			            "Entity": "order.sales_ytd"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "date_tbl"
-			            },
-			            "Object": {
-			              "Role": "order.sales_ytd"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "date_tbls_have_sales_ytd"
-			        }
-			      ]
-			    },
-			    "order_has_sales_ytd": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.sales_ytd": {
-			          "Target": {
-			            "Entity": "order.sales_ytd"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Object": {
-			              "Role": "order.sales_ytd"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "orders_have_sales_ytd"
-			        }
-			      ]
-			    },
-			    "order_has_py_sales": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.py_sales": {
-			          "Target": {
-			            "Entity": "order.py_sales"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Object": {
-			              "Role": "order.py_sales"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "orders_have_py_sales"
-			        }
-			      ]
-			    },
-			    "order_has_yoy_sales": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.yoy_sales": {
-			          "Target": {
-			            "Entity": "order.yoy_sales"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Object": {
-			              "Role": "order.yoy_sales"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "orders_have_yoy_sales"
-			        }
-			      ]
-			    },
-			    "order_has_page_title": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.page_title": {
-			          "Target": {
-			            "Entity": "order.page_title"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Object": {
-			              "Role": "order.page_title"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "orders_have_page_title"
-			        }
-			      ]
-			    },
-			    "order_has_year_selection": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.year_selection": {
-			          "Target": {
-			            "Entity": "order.year_selection"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Object": {
-			              "Role": "order.year_selection"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "orders_have_year_selection"
-			        }
-			      ]
-			    },
-			    "order_has_sales_rank": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.sales_rank": {
-			          "Target": {
-			            "Entity": "order.sales_rank"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Object": {
-			              "Role": "order.sales_rank"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "orders_have_sales_rank"
-			        }
-			      ]
-			    },
-			    "order_has_topn": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order": {
-			          "Target": {
-			            "Entity": "order"
-			          }
-			        },
-			        "order.topn": {
-			          "Target": {
-			            "Entity": "order.topn"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order"
-			            },
-			            "Object": {
-			              "Role": "order.topn"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "orders_have_topn"
-			        }
-			      ]
-			    },
-			    "topn_has_order_topn": {
-			      "Binding": {
-			        "ConceptualEntity": "TOPN"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "topn": {
-			          "Target": {
-			            "Entity": "topn"
-			          }
-			        },
-			        "order.topn": {
-			          "Target": {
-			            "Entity": "order.topn"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "topn"
-			            },
-			            "Object": {
-			              "Role": "order.topn"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "topns_have_topn"
-			        }
-			      ]
-			    },
-			    "person_has_region": {
-			      "Binding": {
-			        "ConceptualEntity": "People"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "person": {
-			          "Target": {
-			            "Entity": "person"
-			          }
-			        },
-			        "person.region": {
-			          "Target": {
-			            "Entity": "person.region"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "person"
-			            },
-			            "Object": {
-			              "Role": "person.region"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "people_have_regions"
-			        }
-			      ]
-			    },
-			    "return_has_returned": {
-			      "Binding": {
-			        "ConceptualEntity": "Returns"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "return": {
-			          "Target": {
-			            "Entity": "return"
-			          }
-			        },
-			        "return.returned": {
-			          "Target": {
-			            "Entity": "return.returned"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "return"
-			            },
-			            "Object": {
-			              "Role": "return.returned"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "returns_have_returned"
-			        }
-			      ]
-			    },
-			    "return_has_order_ID": {
-			      "Binding": {
-			        "ConceptualEntity": "Returns"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "return": {
-			          "Target": {
-			            "Entity": "return"
-			          }
-			        },
-			        "return.order_ID": {
-			          "Target": {
-			            "Entity": "return.order_ID"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "return"
-			            },
-			            "Object": {
-			              "Role": "return.order_ID"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "returns_have_order_ID"
-			        }
-			      ]
-			    },
-			    "date_tbl_has_date": {
-			      "Binding": {
-			        "ConceptualEntity": "DATE_TBL"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "date_tbl": {
-			          "Target": {
-			            "Entity": "date_tbl"
-			          }
-			        },
 			        "date_tbl.date": {
 			          "Target": {
 			            "Entity": "date_tbl.date"
 			          }
+			        },
+			        "date_tbl.date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "date_tbl.date.date_hierarchy"
+			          }
 			        }
 			      },
 			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "date_tbl.date"
+			            },
+			            "Object": {
+			              "Role": "date_tbl.date.date_hierarchy"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dates_have_date_hierarchies"
+			        }
+			      ]
+			    },
+			    "order_ship_date_date_hierarchy_has_order_ship_date_day": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order.ship_date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "order.ship_date.date_hierarchy"
+			          }
+			        },
+			        "order.ship_date.day": {
+			          "Target": {
+			            "Entity": "order.ship_date.day"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order.ship_date.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "order.ship_date.day"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "ship_date_hierarchies_have_ship_days"
+			        }
+			      ]
+			    },
+			    "order_ship_date_date_hierarchy_has_order_ship_date_month": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order.ship_date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "order.ship_date.date_hierarchy"
+			          }
+			        },
+			        "order.ship_date.month": {
+			          "Target": {
+			            "Entity": "order.ship_date.month"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order.ship_date.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "order.ship_date.month"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "ship_date_hierarchies_have_ship_months"
+			        }
+			      ]
+			    },
+			    "order_ship_date_date_hierarchy_has_order_ship_date_quarter": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order.ship_date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "order.ship_date.date_hierarchy"
+			          }
+			        },
+			        "order.ship_date.quarter": {
+			          "Target": {
+			            "Entity": "order.ship_date.quarter"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order.ship_date.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "order.ship_date.quarter"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "ship_date_hierarchies_have_ship_quarters"
+			        }
+			      ]
+			    },
+			    "order_ship_date_date_hierarchy_has_order_ship_date_year": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order.ship_date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "order.ship_date.date_hierarchy"
+			          }
+			        },
+			        "order.ship_date.year": {
+			          "Target": {
+			            "Entity": "order.ship_date.year"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order.ship_date.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "order.ship_date.year"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "ship_date_hierarchies_have_ship_years"
+			        }
+			      ]
+			    },
+			    "order_ship_date_has_date_hierarchy": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order.ship_date": {
+			          "Target": {
+			            "Entity": "order.ship_date"
+			          }
+			        },
+			        "order.ship_date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "order.ship_date.date_hierarchy"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order.ship_date"
+			            },
+			            "Object": {
+			              "Role": "order.ship_date.date_hierarchy"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "ship_dates_have_ship_date_hierarchies"
+			        }
+			      ]
+			    },
+			    "order_has_date_tbl": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "date_tbl": {
+			          "Target": {
+			            "Entity": "date_tbl"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Object": {
+			              "Role": "date_tbl"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_have_date_tbls"
+			        },
 			        {
 			          "Attribute": {
 			            "Subject": {
 			              "Role": "date_tbl"
 			            },
 			            "Object": {
-			              "Role": "date_tbl.date"
+			              "Role": "order"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "date_tbls_have_dates"
+			          "ID": "date_tbls_have_orders"
 			        }
 			      ]
 			    },
-			    "topn_has_topn": {
+			    "order_has_return": {
 			      "Binding": {
-			        "ConceptualEntity": "TOPN"
+			        "ConceptualEntity": "Orders"
 			      },
 			      "State": "Generated",
 			      "Roles": {
-			        "topn": {
+			        "order": {
 			          "Target": {
-			            "Entity": "topn"
+			            "Entity": "order"
 			          }
 			        },
-			        "topn.topn": {
+			        "return": {
 			          "Target": {
-			            "Entity": "topn.topn"
+			            "Entity": "return"
 			          }
 			        }
 			      },
@@ -5644,48 +4306,28 @@ cultureInfo en-US
 			        {
 			          "Attribute": {
 			            "Subject": {
-			              "Role": "topn"
+			              "Role": "order"
 			            },
 			            "Object": {
-			              "Role": "topn.topn"
+			              "Role": "return"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "topns_have_topns"
-			        }
-			      ]
-			    },
-			    "topn_has_TOPN_value": {
-			      "Binding": {
-			        "ConceptualEntity": "TOPN"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "topn": {
-			          "Target": {
-			            "Entity": "topn"
-			          }
+			          "ID": "orders_have_returns"
 			        },
-			        "topn.TOPN_value": {
-			          "Target": {
-			            "Entity": "topn.TOPN_value"
-			          }
-			        }
-			      },
-			      "Phrasings": [
 			        {
 			          "Attribute": {
 			            "Subject": {
-			              "Role": "topn"
+			              "Role": "return"
 			            },
 			            "Object": {
-			              "Role": "topn.TOPN_value"
+			              "Role": "order"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "topns_have_TOPN_value"
+			          "ID": "returns_have_orders"
 			        }
 			      ]
 			    },
@@ -5742,7 +4384,7 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "order_has_return": {
+			    "order_has_rank": {
 			      "Binding": {
 			        "ConceptualEntity": "Orders"
 			      },
@@ -5753,9 +4395,9 @@ cultureInfo en-US
 			            "Entity": "order"
 			          }
 			        },
-			        "return": {
+			        "order.rank": {
 			          "Target": {
-			            "Entity": "return"
+			            "Entity": "order.rank"
 			          }
 			        }
 			      },
@@ -5766,42 +4408,29 @@ cultureInfo en-US
 			              "Role": "order"
 			            },
 			            "Object": {
-			              "Role": "return"
+			              "Role": "order.rank"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "orders_have_returns"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "return"
-			            },
-			            "Object": {
-			              "Role": "order"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "returns_have_orders"
+			          "ID": "orders_have_rank"
 			        }
 			      ]
 			    },
-			    "order_has_date_tbl": {
+			    "topn_has_TOPN_value": {
 			      "Binding": {
-			        "ConceptualEntity": "Orders"
+			        "ConceptualEntity": "TOPN"
 			      },
 			      "State": "Generated",
 			      "Roles": {
-			        "order": {
+			        "topn": {
 			          "Target": {
-			            "Entity": "order"
+			            "Entity": "topn"
 			          }
 			        },
-			        "date_tbl": {
+			        "topn.TOPN_value": {
 			          "Target": {
-			            "Entity": "date_tbl"
+			            "Entity": "topn.TOPN_value"
 			          }
 			        }
 			      },
@@ -5809,45 +4438,32 @@ cultureInfo en-US
 			        {
 			          "Attribute": {
 			            "Subject": {
-			              "Role": "order"
+			              "Role": "topn"
 			            },
 			            "Object": {
-			              "Role": "date_tbl"
+			              "Role": "topn.TOPN_value"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "orders_have_date_tbls"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "date_tbl"
-			            },
-			            "Object": {
-			              "Role": "order"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "date_tbls_have_orders"
+			          "ID": "topns_have_TOPN_value"
 			        }
 			      ]
 			    },
-			    "order_ship_date_has_date_hierarchy": {
+			    "topn_has_topn": {
 			      "Binding": {
-			        "ConceptualEntity": "Orders"
+			        "ConceptualEntity": "TOPN"
 			      },
 			      "State": "Generated",
 			      "Roles": {
-			        "order.ship_date": {
+			        "topn": {
 			          "Target": {
-			            "Entity": "order.ship_date"
+			            "Entity": "topn"
 			          }
 			        },
-			        "order.ship_date.date_hierarchy": {
+			        "topn.topn": {
 			          "Target": {
-			            "Entity": "order.ship_date.date_hierarchy"
+			            "Entity": "topn.topn"
 			          }
 			        }
 			      },
@@ -5855,164 +4471,32 @@ cultureInfo en-US
 			        {
 			          "Attribute": {
 			            "Subject": {
-			              "Role": "order.ship_date"
+			              "Role": "topn"
 			            },
 			            "Object": {
-			              "Role": "order.ship_date.date_hierarchy"
+			              "Role": "topn.topn"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "ship_dates_have_ship_date_hierarchies"
+			          "ID": "topns_have_topns"
 			        }
 			      ]
 			    },
-			    "order_ship_date_date_hierarchy_has_order_ship_date_year": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order.ship_date.date_hierarchy": {
-			          "Target": {
-			            "Entity": "order.ship_date.date_hierarchy"
-			          }
-			        },
-			        "order.ship_date.year": {
-			          "Target": {
-			            "Entity": "order.ship_date.year"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order.ship_date.date_hierarchy"
-			            },
-			            "Object": {
-			              "Role": "order.ship_date.year"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "ship_date_hierarchies_have_ship_years"
-			        }
-			      ]
-			    },
-			    "order_ship_date_date_hierarchy_has_order_ship_date_quarter": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order.ship_date.date_hierarchy": {
-			          "Target": {
-			            "Entity": "order.ship_date.date_hierarchy"
-			          }
-			        },
-			        "order.ship_date.quarter": {
-			          "Target": {
-			            "Entity": "order.ship_date.quarter"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order.ship_date.date_hierarchy"
-			            },
-			            "Object": {
-			              "Role": "order.ship_date.quarter"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "ship_date_hierarchies_have_ship_quarters"
-			        }
-			      ]
-			    },
-			    "order_ship_date_date_hierarchy_has_order_ship_date_month": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order.ship_date.date_hierarchy": {
-			          "Target": {
-			            "Entity": "order.ship_date.date_hierarchy"
-			          }
-			        },
-			        "order.ship_date.month": {
-			          "Target": {
-			            "Entity": "order.ship_date.month"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order.ship_date.date_hierarchy"
-			            },
-			            "Object": {
-			              "Role": "order.ship_date.month"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "ship_date_hierarchies_have_ship_months"
-			        }
-			      ]
-			    },
-			    "order_ship_date_date_hierarchy_has_order_ship_date_day": {
-			      "Binding": {
-			        "ConceptualEntity": "Orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order.ship_date.date_hierarchy": {
-			          "Target": {
-			            "Entity": "order.ship_date.date_hierarchy"
-			          }
-			        },
-			        "order.ship_date.day": {
-			          "Target": {
-			            "Entity": "order.ship_date.day"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order.ship_date.date_hierarchy"
-			            },
-			            "Object": {
-			              "Role": "order.ship_date.day"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "ship_date_hierarchies_have_ship_days"
-			        }
-			      ]
-			    },
-			    "date_tbl_date_has_date_hierarchy": {
+			    "date_tbl_has_date": {
 			      "Binding": {
 			        "ConceptualEntity": "DATE_TBL"
 			      },
 			      "State": "Generated",
 			      "Roles": {
+			        "date_tbl": {
+			          "Target": {
+			            "Entity": "date_tbl"
+			          }
+			        },
 			        "date_tbl.date": {
 			          "Target": {
 			            "Entity": "date_tbl.date"
-			          }
-			        },
-			        "date_tbl.date.date_hierarchy": {
-			          "Target": {
-			            "Entity": "date_tbl.date.date_hierarchy"
 			          }
 			        }
 			      },
@@ -6020,15 +4504,1600 @@ cultureInfo en-US
 			        {
 			          "Attribute": {
 			            "Subject": {
-			              "Role": "date_tbl.date"
+			              "Role": "date_tbl"
 			            },
 			            "Object": {
-			              "Role": "date_tbl.date.date_hierarchy"
+			              "Role": "date_tbl.date"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "dates_have_date_hierarchies"
+			          "ID": "date_tbls_have_dates"
+			        }
+			      ]
+			    },
+			    "return_has_order_ID": {
+			      "Binding": {
+			        "ConceptualEntity": "Returns"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "return": {
+			          "Target": {
+			            "Entity": "return"
+			          }
+			        },
+			        "return.order_ID": {
+			          "Target": {
+			            "Entity": "return.order_ID"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "return"
+			            },
+			            "Object": {
+			              "Role": "return.order_ID"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "returns_have_order_ID"
+			        }
+			      ]
+			    },
+			    "return_has_returned": {
+			      "Binding": {
+			        "ConceptualEntity": "Returns"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "return": {
+			          "Target": {
+			            "Entity": "return"
+			          }
+			        },
+			        "return.returned": {
+			          "Target": {
+			            "Entity": "return.returned"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "return"
+			            },
+			            "Object": {
+			              "Role": "return.returned"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "returns_have_returned"
+			        }
+			      ]
+			    },
+			    "person_has_region": {
+			      "Binding": {
+			        "ConceptualEntity": "People"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "person": {
+			          "Target": {
+			            "Entity": "person"
+			          }
+			        },
+			        "person.region": {
+			          "Target": {
+			            "Entity": "person.region"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "person"
+			            },
+			            "Object": {
+			              "Role": "person.region"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "people_have_regions"
+			        }
+			      ]
+			    },
+			    "person_has_person": {
+			      "Binding": {
+			        "ConceptualEntity": "People"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "person": {
+			          "Target": {
+			            "Entity": "person"
+			          }
+			        },
+			        "person.person": {
+			          "Target": {
+			            "Entity": "person.person"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "person"
+			            },
+			            "Object": {
+			              "Role": "person.person"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "people_have_people"
+			        },
+			        {
+			          "Name": {
+			            "Subject": {
+			              "Role": "person"
+			            },
+			            "Name": {
+			              "Role": "person.person"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "people_are_names_IDs_of_people"
+			        }
+			      ]
+			    },
+			    "topn_has_order_topn": {
+			      "Binding": {
+			        "ConceptualEntity": "TOPN"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "topn": {
+			          "Target": {
+			            "Entity": "topn"
+			          }
+			        },
+			        "order.topn": {
+			          "Target": {
+			            "Entity": "order.topn"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "topn"
+			            },
+			            "Object": {
+			              "Role": "order.topn"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "topns_have_topn"
+			        }
+			      ]
+			    },
+			    "order_has_topn": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.topn": {
+			          "Target": {
+			            "Entity": "order.topn"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Object": {
+			              "Role": "order.topn"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_have_topn"
+			        }
+			      ]
+			    },
+			    "order_has_sales_rank": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.sales_rank": {
+			          "Target": {
+			            "Entity": "order.sales_rank"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Object": {
+			              "Role": "order.sales_rank"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_have_sales_rank"
+			        }
+			      ]
+			    },
+			    "order_has_year_selection": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.year_selection": {
+			          "Target": {
+			            "Entity": "order.year_selection"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Object": {
+			              "Role": "order.year_selection"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_have_year_selection"
+			        }
+			      ]
+			    },
+			    "order_has_page_title": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.page_title": {
+			          "Target": {
+			            "Entity": "order.page_title"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Object": {
+			              "Role": "order.page_title"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_have_page_title"
+			        }
+			      ]
+			    },
+			    "order_has_yoy_sales": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.yoy_sales": {
+			          "Target": {
+			            "Entity": "order.yoy_sales"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Object": {
+			              "Role": "order.yoy_sales"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_have_yoy_sales"
+			        }
+			      ]
+			    },
+			    "order_has_py_sales": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.py_sales": {
+			          "Target": {
+			            "Entity": "order.py_sales"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Object": {
+			              "Role": "order.py_sales"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_have_py_sales"
+			        }
+			      ]
+			    },
+			    "order_has_sales_ytd": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.sales_ytd": {
+			          "Target": {
+			            "Entity": "order.sales_ytd"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Object": {
+			              "Role": "order.sales_ytd"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_have_sales_ytd"
+			        }
+			      ]
+			    },
+			    "date_tbl_has_order_sales_ytd": {
+			      "Binding": {
+			        "ConceptualEntity": "DATE_TBL"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "date_tbl": {
+			          "Target": {
+			            "Entity": "date_tbl"
+			          }
+			        },
+			        "order.sales_ytd": {
+			          "Target": {
+			            "Entity": "order.sales_ytd"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "date_tbl"
+			            },
+			            "Object": {
+			              "Role": "order.sales_ytd"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "date_tbls_have_sales_ytd"
+			        }
+			      ]
+			    },
+			    "order_has_average_discount": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.average_discount": {
+			          "Target": {
+			            "Entity": "order.average_discount"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Object": {
+			              "Role": "order.average_discount"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_have_average_discount"
+			        }
+			      ]
+			    },
+			    "order_has_total_orders": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.total_orders": {
+			          "Target": {
+			            "Entity": "order.total_orders"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Object": {
+			              "Role": "order.total_orders"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_have_total_orders"
+			        }
+			      ]
+			    },
+			    "order_has_total_profit": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.total_profit": {
+			          "Target": {
+			            "Entity": "order.total_profit"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Object": {
+			              "Role": "order.total_profit"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_have_total_profit"
+			        }
+			      ]
+			    },
+			    "order_has_total_sales": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.total_sales": {
+			          "Target": {
+			            "Entity": "order.total_sales"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Object": {
+			              "Role": "order.total_sales"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_have_total_sales"
+			        }
+			      ]
+			    },
+			    "order_has_PROFIT_MARGIN__bins": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.PROFIT_MARGIN__bins": {
+			          "Target": {
+			            "Entity": "order.PROFIT_MARGIN__bins"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Object": {
+			              "Role": "order.PROFIT_MARGIN__bins"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_have_PROFIT_MARGIN__bins"
+			        }
+			      ]
+			    },
+			    "order_has_profit_margin_": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.profit_margin_": {
+			          "Target": {
+			            "Entity": "order.profit_margin_"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Object": {
+			              "Role": "order.profit_margin_"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_have_profit_margin_"
+			        }
+			      ]
+			    },
+			    "order_has_profit": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.profit": {
+			          "Target": {
+			            "Entity": "order.profit"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Object": {
+			              "Role": "order.profit"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_have_profits"
+			        },
+			        {
+			          "Adjective": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Adjectives": [
+			              {
+			                "expensive": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Antonyms": [
+			              {
+			                "cheap": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Measurement": {
+			              "Role": "order.profit"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "profit_indicates_how_expensive_orders_are"
+			        }
+			      ]
+			    },
+			    "order_has_discount": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.discount": {
+			          "Target": {
+			            "Entity": "order.discount"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Object": {
+			              "Role": "order.discount"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_have_discounts"
+			        }
+			      ]
+			    },
+			    "order_has_quantity": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.quantity": {
+			          "Target": {
+			            "Entity": "order.quantity"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Object": {
+			              "Role": "order.quantity"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_have_quantities"
+			        }
+			      ]
+			    },
+			    "order_has_sale": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.sale": {
+			          "Target": {
+			            "Entity": "order.sale"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Object": {
+			              "Role": "order.sale"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_have_sales"
+			        },
+			        {
+			          "Adjective": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Adjectives": [
+			              {
+			                "expensive": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Antonyms": [
+			              {
+			                "cheap": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Measurement": {
+			              "Role": "order.sale"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "sale_indicates_how_expensive_orders_are"
+			        }
+			      ]
+			    },
+			    "order_has_product_name": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.product_name": {
+			          "Target": {
+			            "Entity": "order.product_name"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Object": {
+			              "Role": "order.product_name"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_have_product_names"
+			        }
+			      ]
+			    },
+			    "order_has_subcategory": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.subcategory": {
+			          "Target": {
+			            "Entity": "order.subcategory"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Object": {
+			              "Role": "order.subcategory"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_have_subcategories"
+			        }
+			      ]
+			    },
+			    "order_has_category": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.category": {
+			          "Target": {
+			            "Entity": "order.category"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Object": {
+			              "Role": "order.category"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_have_categories"
+			        }
+			      ]
+			    },
+			    "order_has_product_ID": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.product_ID": {
+			          "Target": {
+			            "Entity": "order.product_ID"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Object": {
+			              "Role": "order.product_ID"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_have_product_ID"
+			        }
+			      ]
+			    },
+			    "order_has_postal_code": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.postal_code": {
+			          "Target": {
+			            "Entity": "order.postal_code"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Object": {
+			              "Role": "order.postal_code"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_have_postal_codes"
+			        }
+			      ]
+			    },
+			    "order_has_state": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.state": {
+			          "Target": {
+			            "Entity": "order.state"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Object": {
+			              "Role": "order.state"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_have_states"
+			        }
+			      ]
+			    },
+			    "order_has_city": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.city": {
+			          "Target": {
+			            "Entity": "order.city"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Object": {
+			              "Role": "order.city"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_have_cities"
+			        }
+			      ]
+			    },
+			    "order_has_country": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.country": {
+			          "Target": {
+			            "Entity": "order.country"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Object": {
+			              "Role": "order.country"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_have_countries"
+			        }
+			      ]
+			    },
+			    "order_has_segment": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.segment": {
+			          "Target": {
+			            "Entity": "order.segment"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Object": {
+			              "Role": "order.segment"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_have_segments"
+			        }
+			      ]
+			    },
+			    "order_has_customer_name": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.customer_name": {
+			          "Target": {
+			            "Entity": "order.customer_name"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Object": {
+			              "Role": "order.customer_name"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_have_customer_names"
+			        }
+			      ]
+			    },
+			    "order_has_customer_ID": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.customer_ID": {
+			          "Target": {
+			            "Entity": "order.customer_ID"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Object": {
+			              "Role": "order.customer_ID"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_have_customer_ID"
+			        }
+			      ]
+			    },
+			    "order_has_ship_mode": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.ship_mode": {
+			          "Target": {
+			            "Entity": "order.ship_mode"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Object": {
+			              "Role": "order.ship_mode"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_have_ship_modes"
+			        }
+			      ]
+			    },
+			    "order_has_ship_date": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.ship_date": {
+			          "Target": {
+			            "Entity": "order.ship_date"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Object": {
+			              "Role": "order.ship_date"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_have_ship_dates"
+			        }
+			      ]
+			    },
+			    "order_has_order_date": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.order_date": {
+			          "Target": {
+			            "Entity": "order.order_date"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Object": {
+			              "Role": "order.order_date"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_have_order_dates"
+			        }
+			      ]
+			    },
+			    "order_has_row_ID": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.row_ID": {
+			          "Target": {
+			            "Entity": "order.row_ID"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Object": {
+			              "Role": "order.row_ID"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_have_row_ID"
+			        }
+			      ]
+			    },
+			    "person_in_region": {
+			      "Binding": {
+			        "ConceptualEntity": "People"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "person": {
+			          "Target": {
+			            "Entity": "person"
+			          }
+			        },
+			        "person.region": {
+			          "Target": {
+			            "Entity": "person.region"
+			          }
+			        }
+			      },
+			      "SemanticSlots": {
+			        "Where": {
+			          "Role": "person.region"
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "person"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "person.region"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "people_are_in_regions"
+			        }
+			      ]
+			    },
+			    "order_in_state": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.state": {
+			          "Target": {
+			            "Entity": "order.state"
+			          }
+			        }
+			      },
+			      "SemanticSlots": {
+			        "Where": {
+			          "Role": "order.state"
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "order.state"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_are_in_states"
+			        }
+			      ]
+			    },
+			    "order_in_city": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.city": {
+			          "Target": {
+			            "Entity": "order.city"
+			          }
+			        }
+			      },
+			      "SemanticSlots": {
+			        "Where": {
+			          "Role": "order.city"
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "order.city"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_are_in_cities"
+			        }
+			      ]
+			    },
+			    "order_in_country": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.country": {
+			          "Target": {
+			            "Entity": "order.country"
+			          }
+			        }
+			      },
+			      "SemanticSlots": {
+			        "Where": {
+			          "Role": "order.country"
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "order"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "order.country"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "orders_are_in_countries"
+			        }
+			      ]
+			    },
+			    "order_is_shipped_on_ship_date": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.ship_date": {
+			          "Target": {
+			            "Entity": "order.ship_date"
+			          }
+			        }
+			      },
+			      "SemanticSlots": {
+			        "When": {
+			          "Role": "order.ship_date"
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Verb": {
+			            "Verbs": [
+			              {
+			                "ship": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "order"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.9,
+			          "ID": "orders_are_shipped_on_ship_dates"
+			        }
+			      ]
+			    },
+			    "order_is_ordered_on_order_date": {
+			      "Binding": {
+			        "ConceptualEntity": "Orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order": {
+			          "Target": {
+			            "Entity": "order"
+			          }
+			        },
+			        "order.order_date": {
+			          "Target": {
+			            "Entity": "order.order_date"
+			          }
+			        }
+			      },
+			      "SemanticSlots": {
+			        "When": {
+			          "Role": "order.order_date"
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Verb": {
+			            "Verbs": [
+			              {
+			                "order": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "order"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.9,
+			          "ID": "orders_are_ordered_on_order_dates"
 			        }
 			      ]
 			    },

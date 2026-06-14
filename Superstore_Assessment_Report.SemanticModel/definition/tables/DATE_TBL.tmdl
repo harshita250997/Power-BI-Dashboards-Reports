@@ -15,6 +15,23 @@ table DATE_TBL
 
 		annotation SummarizationSetBy = Automatic
 
+	column YearMonth = FORMAT(DATE_TBL[Date],"YYYY MMM")
+		dataType: dateTime
+		formatString: yyyy-mm
+		lineageTag: 7e05f46c-7775-4344-ab6a-2552ca2bf4f2
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: bfc31d8b-4777-4af8-b4d5-b4bf8853aaef
+			defaultHierarchy: LocalDateTable_38aa91a6-b7d7-4029-80e2-389c829ab3bc.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
 	partition DATE_TBL = calculated
 		mode: import
 		source = CALENDAR("01-01-2010",TODAY())
