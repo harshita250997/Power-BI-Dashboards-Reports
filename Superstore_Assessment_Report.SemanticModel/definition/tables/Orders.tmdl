@@ -63,6 +63,64 @@ table Orders
 		displayFolder: Measures
 		lineageTag: de366521-8f8b-4da7-b0b6-7ba70625800b
 
+	measure '3-Month Moving AVG Sales' = AVERAGEX(DATESINPERIOD(DATE_TBL[Date],LASTDATE(DATE_TBL[Date]),-3,MONTH),[TOTAL SALES])
+		displayFolder: Measures
+		lineageTag: dd7b4d8f-611e-41e1-a5db-c251339d8708
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AVG_SALES = AVERAGE(Orders[Sales])
+		displayFolder: Measures
+		lineageTag: 3f92aca8-48ca-4103-ad65-c554e9a3cbba
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure OCCURRENCE_SALES = COUNTROWS(Orders)
+		formatString: 0
+		displayFolder: Measures
+		lineageTag: df9bef19-7ee1-41d0-a42a-c86b820c2856
+
+	measure LSTDT = DISTINCTCOUNT(Orders[Order Date])
+		formatString: 0
+		displayFolder: Measures
+		lineageTag: d829dd34-d03f-4f14-9c77-64f1a71ab97a
+
+	measure '3 Month Moving Avg' =
+			
+			CALCULATE(
+			    AVERAGEX(
+			        VALUES(DATE_TBL[YearMonth]),
+			        [TOTAL SALES]
+			    ),
+			    DATESINPERIOD(
+			        DATE_TBL[Date],
+			        MAX(DATE_TBL[Date]),
+			        -3,
+			        MONTH
+			    )
+			)
+		displayFolder: Measures
+		lineageTag: 422b52e5-7788-4943-bcaf-fdc3037bf350
+
+	measure '6 Month Moving Avg' =
+			
+			CALCULATE(
+			    AVERAGEX(
+			        VALUES(DATE_TBL[YearMonth]),
+			        [TOTAL SALES]
+			    ),
+			    DATESINPERIOD(
+			        DATE_TBL[Date],
+			        MAX(DATE_TBL[Date]),
+			        -6,
+			        MONTH
+			    )
+			)
+		displayFolder: Measures
+		lineageTag: d8bac787-62b6-4851-8e19-23edc37f9a20
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column 'Row ID'
 		dataType: int64
 		formatString: 0
